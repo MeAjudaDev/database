@@ -19,7 +19,7 @@ default charset = utf8;
 
 create table categories (
 	id int(11) AUTO_INCREMENT primary key,
-	nome varchar(100) not null,		-- Nome da Categoria ( Obrigatorio )
+	name varchar(100) not null,		-- Nome da Categoria ( Obrigatorio )
 	state char default 'A',			-- [A] Ativo / [D] Desativado (a) / [E] Excluido (a)
 	type char not null,				-- [E] Despesas / [R] Receitas
 	user_id int(11) not null, 		-- Referencia ao usuario que criou a categoria
