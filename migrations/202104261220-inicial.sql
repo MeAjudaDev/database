@@ -8,7 +8,7 @@ create table users(
 	email varchar(100),
 	password varchar(100),
 	activation_code varchar(4), -- Codigo de ativação da conta / Recuperação de Senha
-    state char default 'P', -- [A] Ativo / [P] Pendente / [D] Desativo / [E] Excluido
+    	state char default 'P', -- [A] Ativo / [P] Pendente / [D] Desativo / [E] Excluido
 	update_at datetime on update current_timestamp,
 	created_at datetime default current_timestamp
 ) 
@@ -19,8 +19,8 @@ create table categories (
 	id int(11) primary key,
 	description varchar(100),
 	state char default 'A', -- [A] Ativo / [D] Desativo / [E] Excluido
-    type char, -- [E] Despesas / [R] Receitas
-    user_id int(11),
+    	type char, -- [E] Despesas / [R] Receitas
+    	user_id int(11),
 	update_at datetime on update current_timestamp,
 	created_at datetime default current_timestamp,
     FOREIGN KEY (user_id) REFERENCES users(id)
