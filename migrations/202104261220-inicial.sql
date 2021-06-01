@@ -19,7 +19,7 @@ create table categories (
     id int(11) AUTO_INCREMENT primary key,
     user_id int(11) not null,                       -- Referencia ao usuário que criou a categoria
     name varchar(100) not null,                     -- Nome da Categoria ( Obrigatorio )
-    state char default 'A',                         -- [A] Ativo / [D] Desativado (a) / [E] Excluido (a)
+    enabled default 1 not null,                     -- 1 = True = Enabled / 0 = False = Disabled
     type char not null,                             -- [E] Despesas / [R] Receitas
     update_at datetime on update current_timestamp,
     created_at datetime default current_timestamp,
