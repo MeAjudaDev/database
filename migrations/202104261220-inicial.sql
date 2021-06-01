@@ -13,7 +13,7 @@ create table users (
     created_at datetime default current_timestamp
 ) 
 engine = INNODB 
-default charset = utf8;
+default charset = UTF8MB4;
 
 create table categories (
     id int AUTO_INCREMENT primary key,
@@ -26,7 +26,7 @@ create table categories (
     FOREIGN KEY (user_id) REFERENCES users(id)
 ) 
 engine = INNODB 
-default charset = utf8;
+default charset = UTF8MB4;
 
 create table transactions (
     id int AUTO_INCREMENT primary key,
@@ -44,4 +44,4 @@ create table transactions (
     FOREIGN KEY (category_id) REFERENCES categories(id)
 )
 engine = INNODB 
-default charset = utf8;
+default charset = UTF8MB4;
