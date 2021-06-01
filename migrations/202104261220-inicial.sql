@@ -3,7 +3,7 @@ create database gestao_financeira;
 use gestao_financeira;
 
 create table users (
-    id int(11) AUTO_INCREMENT primary key,
+    id int AUTO_INCREMENT primary key,
     name varchar(100) not null,                     -- Nome do usuario
     email varchar(100) not null,                    -- Email do usuario
     password varchar(100) not null,                 -- Senha do usuario
@@ -16,10 +16,10 @@ engine = INNODB
 default charset = utf8;
 
 create table categories (
-    id int(11) AUTO_INCREMENT primary key,
-    user_id int(11) not null,                       -- Referencia ao usuário que criou a categoria
+    id int AUTO_INCREMENT primary key,
+    user_id int not null,                           -- Referencia ao usuário que criou a categoria
     name varchar(100) not null,                     -- Nome da Categoria ( Obrigatorio )
-    enabled default 1 not null,                     -- 1 = True = Enabled / 0 = False = Disabled
+    enabled boolean default 1 not null,             -- 1 = True = Enabled / 0 = False = Disabled
     type char not null,                             -- [E] Despesas / [R] Receitas
     update_at datetime on update current_timestamp,
     created_at datetime default current_timestamp,
@@ -30,8 +30,8 @@ default charset = utf8;
 
 create table transactions (
     id int AUTO_INCREMENT primary key,
-    user_id int(11) not null,                       -- Referencia ao usuário que criou a transação
-    category_id int(11) not null,                   -- Referencia à categoria dessa transação
+    user_id int not null,                           -- Referencia ao usuário que criou a transação
+    category_id int not null,                       -- Referencia à categoria dessa transação
     description varchar(150) not null,              -- Descrição da transação
     value decimal(15, 2) not null,                  -- Valor da transação
     is_fixed boolean not null,
