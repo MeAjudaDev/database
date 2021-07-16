@@ -1,5 +1,5 @@
--- drop database gestao_financeira;
 create database greenwallet;
+
 use greenwallet;
 
 create table users (
