@@ -10,7 +10,7 @@ create table users (
     activation_code varchar(4),                     -- Codigo de ativação da conta / Recuperação de Senha
     state char default 'P',                         -- [A] Ativo / [P] Pendente / [D] Desativado (a) / [E] Excluido (a)
     created_at datetime default current_timestamp,
-    update_at datetime on update current_timestamp
+    last_updated_at datetime on update current_timestamp
 ) 
 engine = INNODB 
 default charset = UTF8MB4;
@@ -22,7 +22,7 @@ create table categories (
     enabled boolean default 1 not null,             -- 1 = True = Enabled / 0 = False = Disabled
     type char not null,                             -- [E] Despesas / [R] Receitas
     created_at datetime default current_timestamp,
-    update_at datetime on update current_timestamp,
+    last_updated_at datetime on update current_timestamp,
     FOREIGN KEY (user_id) REFERENCES users(id)
 ) 
 engine = INNODB 
@@ -39,7 +39,7 @@ create table transactions (
     type char not null,                             -- Tipo da transação: [E] Expense (Despesas) / [R] Revenue (Receitas)
     state char default 'A',                         -- [A] Ativo / [D] Desativado (a) / [E] Excluido (a)
     created_at datetime default current_timestamp,
-    updated_at datetime on update current_timestamp,
+    last_updated_at datetime on update current_timestamp,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (category_id) REFERENCES categories(id)
 )
