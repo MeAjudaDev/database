@@ -4,11 +4,11 @@ use greenwallet;
 
 create table users (
     id int AUTO_INCREMENT primary key,
-    name varchar(100) not null,                     -- Nome do usuario
-    email varchar(100) not null,                    -- Email do usuario
-    password varchar(100) not null,                 -- Senha do usuario
+    name varchar(100) not null,                     -- Nome do usuário
+    email varchar(100) not null,                    -- Email do usuário
+    password varchar(100) not null,                 -- Senha do usuário
     activation_code varchar(4),                     -- Codigo de ativação da conta / recuperação de senha
-    state char default 'P',                         -- [A] Ativo / [P] Pendente / [D] Desativado (a) / [E] Excluido (a)
+    state char default 'P',                         -- [A] Ativo / [P] Pendente / [D] Desativado (a) / [E] Excluído (a)
     created_at datetime default current_timestamp,
     last_updated_at datetime on update current_timestamp
 ) 
@@ -17,7 +17,7 @@ default charset = UTF8MB4;
 
 create table categories (
     id int AUTO_INCREMENT primary key,
-    user_id int not null,                           -- Referencia ao usuário que criou a categoria
+    user_id int not null,                           -- Referência ao usuário que criou a categoria
     name varchar(100) not null,                     -- Nome da categoria (obrigatório)
     enabled boolean default 1 not null,             -- 1 = True = Enabled / 0 = False = Disabled
     type char not null,                             -- [E] Despesas / [R] Receitas
@@ -37,7 +37,7 @@ create table transactions (
     is_fixed boolean not null,
     due_date date not null,                         -- Data de vencimento ou recebimento
     type char not null,                             -- Tipo da transação: [E] Expense (Despesas) / [R] Revenue (Receitas)
-    state char default 'A',                         -- [A] Ativo / [D] Desativado (a) / [E] Excluido (a)
+    state char default 'A',                         -- [A] Ativo / [D] Desativado (a) / [E] Excluído (a)
     created_at datetime default current_timestamp,
     last_updated_at datetime on update current_timestamp,
     FOREIGN KEY (user_id) REFERENCES users(id),
